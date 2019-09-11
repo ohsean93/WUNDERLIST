@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container py-5">
+  <h1>첫 페이지야</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+          <th scope="col">No.</th>
+          <th scope="col">할 일</th>
+          <th scope="col">마감일</th>
+          <th scope="col">수정/삭제</th>
+      </tr>
+    <tbody>
+      {% for todo in todos %}
+      <tr>
+        <th scope="row">{{ todo.id }}</th>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.due_date }}</td>
+        <td><button type="button" class="btn btn-dark"><a class="text-light" href="{% url 'todos:update' todo.id %}">수정</a></button> 
+          <button type="button" class="btn btn-danger"><a class="text-light" href="{% url 'todos:delete' todo.id %}">삭제</a></button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}
