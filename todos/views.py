@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Todo
+from decouple import config
+import requests
 # Create your views here.
 
 def index(request):
@@ -22,7 +24,13 @@ def create(request):
         due_date = request.POST.get('due-date')
 
         Todo.objects.create(title=title, due_date=due_date)
-
+        token = config('TOKEN')
+        user_list = [config('USER'), config('MAIN_USER')]
+        base_url = 'https://api.telegram.org/bot'
+        for user_id in user_list:
+            url = base_url + token + '/sendMessage?text='+ title + str(due_date) +'&chat_id=' + user_id
+            print(url)
+            requests.get(url)
         return redirect('todos:index')
     else:
         return render(request, 'todos/create.html')
