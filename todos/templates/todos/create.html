@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
+<div class="container py-5">
   <h1>새 일정 쓰기</h1>
   <form action="{% url 'todos:create' %}" method="POST">
     {% csrf_token %}
@@ -10,7 +10,7 @@
       <input type="text" class="form-control" placeholder="write title" name="title">
     </div>
     <div class="form-group">
-      <label></label>
+      <label>기간</label>
       <input type="date" class="form-control" placeholder="img_url" name="due-date">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

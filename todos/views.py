@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Todo
 # Create your views here.
+    
+def info(request):
+    return render(request, 'todos/info.html')
 
 def index(request):
     todos = Todo.objects.all()

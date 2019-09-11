@@ -1,5 +1,5 @@
 from django.urls import path
-from todos import views
+from . import views
 
 app_name = 'todos'
 
@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/', views.create, name='create'),
     path('delete<int:pk>/', views.delete, name='delete'),
     path('update/<int:pk>/', views.update, name='update'),
+    path('info', views.info, name='info'),
 ]
