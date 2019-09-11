@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<div class="container">
+<div class="container py-5">
   <h1>일정 수정하기</h1>
   <form action="{% url 'todos:update' todo.id %}" method="POST">
     {% csrf_token %}
     <div class="form-group">
-      <label>제목</label>
+      <label >제목</label>
       <input type="text" class="form-control" value="{{ todo.title }}" name="title">
     </div>
     <div class="form-group">
-      <label></label>
+      <label>기간</label>
       <input type="date" class="form-control" value="{{ todo.due_date|date:'Y-m-d' }}" name="due-date">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

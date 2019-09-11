@@ -3,6 +3,9 @@ from .models import Todo
 from decouple import config
 import requests
 # Create your views here.
+    
+def info(request):
+    return render(request, 'todos/info.html')
 
 def index(request):
     todos = Todo.objects.all()
